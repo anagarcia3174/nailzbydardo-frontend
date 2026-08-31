@@ -1,0 +1,118 @@
+.nav {
+  position: fixed;
+  z-index: 1000;
+
+  left: 16px;
+  right: 16px;
+  bottom: 12px;
+
+  display: flex;
+  align-items: center;
+
+  height: 64px;
+  padding: 6px;
+
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(235, 229, 222, 0.8);
+  border-radius: 32px;
+
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.tab {
+  flex: 1;
+
+  height: 52px;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  padding: 5px 2px;
+
+  border: none;
+  border-radius: 26px;
+
+  background: transparent;
+  color: #9a8d80;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.label {
+  max-width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.tab:hover {
+  color: #75695e;
+}
+
+.tab:active {
+  transform: scale(0.94);
+}
+
+.tab.active {
+  background: #f8f1eb;
+  color: #c38c61;
+}
+
+.tab.active .icon {
+  stroke-width: 2;
+}
+
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .nav {
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+  }
+
+  .tab {
+    height: 52px;
+  }
+
+  .label {
+    font-size: 8px;
+  }
+}
+
+
+/* Tablets and desktop */
+@media (min-width: 768px) {
+  .nav {
+    left: 50%;
+    right: auto;
+    bottom: 24px;
+
+    width: min(600px, calc(100% - 48px));
+
+    transform: translateX(-50%);
+  }
+}
