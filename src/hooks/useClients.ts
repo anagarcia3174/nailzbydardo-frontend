@@ -1,5 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { clientsApi, type CreateClientRequest, type UpdateClientRequest } from "../api/clients";
+import {
+  clientsApi,
+  type CreateClientRequest,
+  type UpdateClientRequest,
+} from "../api/clients";
 
 export function useClients() {
   return useQuery({
@@ -20,6 +24,14 @@ export function useClientAppointments(id: string) {
   return useQuery({
     queryKey: ["clients", id, "appointments"],
     queryFn: () => clientsApi.getAppointments(id),
+    enabled: !!id,
+  });
+}
+
+export function useClientSpent(id: string) {
+  return useQuery({
+    queryKey: ["clients", id, "spent"],
+    queryFn: () => clientsApi.getTotalSpent(id),
     enabled: !!id,
   });
 }

@@ -41,11 +41,17 @@ const tabs = [
     icon: IconBrush,
   },
 ];
+const HIDDEN_NAV_ROUTES = [/^\/clients\/[^/]+$/];
 
 export function BottomNav() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const hideNav = HIDDEN_NAV_ROUTES.some((pattern) =>
+    pattern.test(location.pathname)
+  );
+
+  if (hideNav) return null
   return (
     <nav className={styles.nav}>
       {tabs.map((tab) => {
@@ -61,7 +67,6 @@ export function BottomNav() {
             aria-label={tab.label}
           >
             <Icon className={styles.icon} size={22} stroke={1.8} />
-
           </button>
         );
       })}

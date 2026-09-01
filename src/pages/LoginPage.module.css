@@ -157,7 +157,6 @@
   line-height: 1.4;
 }
 
-
 /* Smaller phones */
 @media (max-width: 360px) {
   .page {
@@ -177,7 +176,6 @@
     font-size: 28px;
   }
 }
-
 
 /* Desktop/tablet */
 @media (min-width: 768px) {

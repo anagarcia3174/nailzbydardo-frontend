@@ -7,11 +7,11 @@ export function ProtectedRoute({ children }: { children: ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-     return (
-    <div className="loading">
-      <div className="spinner" />
-    </div>
-  );
+    return (
+      <div className="loading">
+        <div className="spinner" />
+      </div>
+    );
   }
 
   if (!isAuthenticated) {

@@ -5,18 +5,18 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import App from "./App";
 import "./index.css";
-
+import "@fontsource/cormorant-garamond/400.css";
+import "@fontsource/cormorant-garamond/600.css";
 const queryClient = new QueryClient();
-
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </BrowserRouter>
-      </QueryClientProvider>
-  </StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </StrictMode>,
 );

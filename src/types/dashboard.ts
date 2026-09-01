@@ -1,7 +1,7 @@
-import type { Appointment } from "./appointment";
+import type { DashboardAppointment } from "./appointment";
 
 export interface DashboardSummary {
-  upcoming_appointments: Appointment[];
+  upcoming_appointments: DashboardAppointment[];
   monthly_revenue: number;
   monthly_tips: number;
   monthly_appointment_count: number;

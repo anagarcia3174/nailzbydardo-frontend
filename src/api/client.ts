@@ -27,9 +27,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
       if (body?.error) {
         message = body.error;
       }
-    } catch {
-    
-    }
+    } catch {}
     throw new ApiError(response.status, message);
   }
 

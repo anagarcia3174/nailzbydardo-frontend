@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { LoginPage } from "./pages/LoginPage";
@@ -10,7 +9,6 @@ import { ExpensesPage } from "./pages/ExpensesPage";
 import { AppointmentsPage } from "./pages/AppointmentsPage";
 import { AppointmentDetailPage } from "./pages/AppointmentDetailPage";
 import { FinancialsPage } from "./pages/FinancialsPage";
-
 
 function App() {
   return (

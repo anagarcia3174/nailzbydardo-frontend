@@ -80,11 +80,7 @@ export function LoginPage() {
               />
             </label>
 
-            <button
-              type="submit"
-              className={styles.button}
-              disabled={loading}
-            >
+            <button type="submit" className={styles.button} disabled={loading}>
               {loading ? "Logging in..." : "Log in"}
             </button>
           </form>

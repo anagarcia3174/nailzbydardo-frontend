@@ -5,29 +5,35 @@ export type DiscountType = "amount" | "percent";
 export interface Appointment {
   id: string;
   client_id: string;
-  appt_date: string; 
+  appt_date: string;
   appt_status: AppointmentStatus;
-  late_fee: number | null; 
+  late_fee: number | null;
   payment_method: PaymentMethod | null;
   notes: string | null;
   receipt_url: string | null;
   loyalty_reward: boolean;
-  tip: number | null; 
+  tip: number | null;
   created_at: string;
+}
+
+export interface DashboardAppointment {
+  id: string;
+  appt_date: string;
+  client_name: string;
 }
 
 export interface AppointmentServiceSummary {
   id: string;
   service_name: string;
-  service_price: number; 
-  design_price: number; 
+  service_price: number;
+  design_price: number;
 }
 
 export interface AppointmentDiscountSummary {
   id: string;
   discount_name: string;
   discount_type: DiscountType;
-  discount_value: number; 
+  discount_value: number;
 }
 
 export interface AppointmentDetail {
@@ -42,4 +48,21 @@ export interface AppointmentTotal {
   service_total: number;
   tip: number;
   grand_total: number;
+}
+
+export interface AppointmentService  {
+	id:            string;    
+	appointment_id: string;    
+	service_name:   string;    
+	service_price:  number;
+	design_price:   number;
+	created_at:     string;
+}
+export interface AppointmentDiscount  {
+	id:            string;            
+	appointment_id: string;            
+	discount_name:  string;        
+	discount_type:  DiscountType; 
+	discount_value: number;             
+	created_at:     string;         
 }

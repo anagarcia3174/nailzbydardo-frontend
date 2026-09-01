@@ -1,5 +1,9 @@
 import { api } from "./client";
-import type { Client, ClientSummary } from "../types/client";
+import {
+  type ClientTotalSpent,
+  type Client,
+  type ClientSummary,
+} from "../types/client";
 import type { Appointment } from "../types/appointment";
 
 export interface CreateClientRequest {
@@ -20,4 +24,6 @@ export const clientsApi = {
   delete: (id: string) => api.delete<void>(`/clients/${id}`),
   getAppointments: (id: string) =>
     api.get<Appointment[]>(`/clients/${id}/appointments`),
+  getTotalSpent: (id: string) =>
+    api.get<ClientTotalSpent>(`/clients/${id}/spent`),
 };
