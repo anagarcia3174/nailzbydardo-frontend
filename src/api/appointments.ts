@@ -45,14 +45,3 @@ addService: (id: string, data: AddServiceRequest) => api.post<AppointmentService
   removeDiscount: (id: string, discountId: string) =>
     api.delete<void>(`/appointments/${id}/discounts/${discountId}`),
 }
-
-/*
-
-				r.Post("/services", h.Appointment.AddService)
-				r.Delete("/services/{serviceId}", h.Appointment.RemoveService)
-
-				r.Post("/discounts", h.Appointment.AddDiscount)
-				r.Delete("/discounts/{discountId}", h.Appointment.RemoveDiscount)
-			})
-		})
-            */
