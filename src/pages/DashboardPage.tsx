@@ -48,7 +48,7 @@ export function DashboardPage() {
 
   if (isLoading) {
     return (
-      <main className={styles.page}>
+      <main className={styles.scrollPage}>
         <div className={styles.loading}>
           <div className={styles.spinner} />
         </div>
@@ -56,9 +56,9 @@ export function DashboardPage() {
     );
   }
 
-  if (!dashboard) {
+   if (!dashboard) {
     return (
-      <main className={styles.page}>
+      <main className={styles.scrollPage}>
         <div className={styles.empty}>
           <h2>Unable to load dashboard</h2>
           <p>Please try again.</p>
@@ -74,7 +74,7 @@ export function DashboardPage() {
   const appointmentsLabel = hasToday ? "Today" : "Up Next";
 
   return (
-    <main className={styles.page}>
+    <main className={styles.scrollPage}>
       <div className={styles.content}>
         {/* Greeting */}
         <header className={styles.header}>

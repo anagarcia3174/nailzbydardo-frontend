@@ -9,6 +9,7 @@ import { ExpensesPage } from "./pages/ExpensesPage";
 import { AppointmentsPage } from "./pages/AppointmentsPage";
 import { AppointmentDetailPage } from "./pages/AppointmentDetailPage";
 import { FinancialsPage } from "./pages/FinancialsPage";
+import { NewAppointmentPage } from "./pages/NewAppointmenPage";
 
 function App() {
   return (
@@ -60,6 +61,14 @@ function App() {
         element={
           <ProtectedRoute>
             <AppointmentsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/appointments/new"
+        element={
+          <ProtectedRoute>
+            <NewAppointmentPage />
           </ProtectedRoute>
         }
       />

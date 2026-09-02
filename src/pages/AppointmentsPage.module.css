@@ -1,0 +1,199 @@
+.page {
+  composes: page from '../styles/PageShell.module.css';
+  background: #f7f3ee;
+}
+
+.header {
+  composes: header from '../styles/PageShell.module.css';
+  box-sizing: border-box;
+  padding: max(24px, env(safe-area-inset-top)) 18px 16px;
+  background: #f7f3ee;
+}
+
+.body {
+  composes: body from '../styles/PageShell.module.css';
+  box-sizing: border-box;
+  padding: 0 18px calc(100px + env(safe-area-inset-bottom));
+}
+
+.loading {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #e8dfd7;
+  border-top-color: #c38c61;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header */
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.headerTop h1 {
+  margin: 0;
+  color: #272320;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* New button */
+
+.newButton {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 12px;
+  background: #211e1c;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.newButton:hover {
+  background: #302c29;
+}
+
+.newButton:active {
+  transform: scale(0.96);
+}
+
+.statusChips {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: #ffffff;
+  color: #9b8876;
+  border: none;
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pill:active {
+  opacity: 0.8;
+}
+
+.pillActive {
+  background: #1c1917;
+  color: #ffffff;
+}
+
+.empty {
+  font-size: 14px;
+  color: #b5a99a;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Card list */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.card:active {
+  background: #f7f2ec;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0ebe3;
+  color: #9b8876;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.clientName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1c1917;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.apptDate {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9b8876;
+}
+
+.cardRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.apptTime {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c4956a;
+}

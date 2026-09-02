@@ -1,11 +1,8 @@
-.page {
-  height: 100%;
+.scrollPage {
+  composes: scrollPage from '../styles/PageShell.module.css';
   box-sizing: border-box;
-
   background: #f7f3ee;
-
-  padding: 0 18px;
-  padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  padding: 0 18px calc(100px + env(safe-area-inset-bottom));
 }
 
 .content {
@@ -23,9 +20,7 @@
 
 .date {
   margin: 0 0 4px;
-
   color: #b5a99a;
-
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -34,9 +29,7 @@
 
 .header h1 {
   margin: 0;
-
   color: #1c1917;
-
   font-size: 42px;
   font-weight: 400;
   line-height: 1.05;
@@ -58,11 +51,8 @@
 
 .sectionTitle {
   margin: 0 0 10px;
-
   display: block;
-
   color: #b5a99a;
-
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 2.5px;
@@ -79,27 +69,17 @@
 
 .appointmentCard {
   width: 100%;
-
   display: flex;
   align-items: center;
   gap: 13px;
-
   padding: 14px 16px;
-
   border: none;
   border-radius: 18px;
-
   background: #ffffff;
-
   text-align: left;
-
   cursor: pointer;
-
   -webkit-tap-highlight-color: transparent;
-
-  transition:
-    background 0.12s ease,
-    transform 0.12s ease;
+  transition: background 0.12s ease, transform 0.12s ease;
 }
 
 .appointmentCard:active {
@@ -107,33 +87,23 @@
   transform: scale(0.99);
 }
 
-/* Avatar */
-
 .avatar {
   width: 36px;
   height: 36px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
-
   background: #f0ebe3;
   color: #9b8876;
-
   font-size: 13px;
   font-weight: 600;
 }
 
-/* Client */
-
 .clientInfo {
   min-width: 0;
   flex: 1;
-
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -141,40 +111,30 @@
 
 .clientName {
   display: block;
-
   overflow: hidden;
-
   color: #1c1917;
-
   font-size: 15px;
   font-weight: 600;
-
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* Appointment time */
-
 .appointmentTime {
   flex-shrink: 0;
-
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
   gap: 2px;
 }
 
 .appointmentDate {
   color: #9b8876;
-
   font-size: 13px;
   font-weight: 400;
 }
 
 .time {
   color: #c4956a;
-
   font-size: 13px;
   font-weight: 700;
 }
@@ -187,21 +147,15 @@
 
 .emptyUpcoming {
   padding: 36px 20px;
-
   display: block;
-
   border-radius: 18px;
-
   background: #ffffff;
-
   text-align: center;
 }
 
 .emptyUpcoming h3 {
   margin: 0 0 14px;
-
   color: #b5a99a;
-
   font-family: inherit;
   font-size: 14px;
   font-weight: 400;
@@ -216,17 +170,11 @@
   border: 1.5px solid #ddd6cc;
   border-radius: 20px;
   padding: 8px 18px;
-
   color: #9b8876;
-
   font-family: inherit;
   font-size: 13px;
-
   cursor: pointer;
-
-  transition:
-    border-color 0.15s,
-    color 0.15s;
+  transition: border-color 0.15s, color 0.15s;
 }
 
 .emptyBtn:active {
@@ -238,32 +186,25 @@
 
 .statsCard {
   width: 100%;
-
   display: flex;
   align-items: center;
-
   padding: 20px 16px;
-
   border-radius: 18px;
-
   background: #ffffff;
 }
 
 .stat {
   min-width: 0;
   flex: 1;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-
   text-align: center;
 }
 
 .statValue {
   color: #1c1917;
-
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 30px;
   font-weight: 600;
@@ -272,7 +213,6 @@
 
 .statLabel {
   color: #b5a99a;
-
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -282,9 +222,7 @@
 .divider {
   width: 1px;
   height: 36px;
-
   flex-shrink: 0;
-
   background: #f0ebe3;
 }
 
@@ -298,28 +236,19 @@
 
 .shortcutTile {
   min-height: 96px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   padding: 18px 12px;
-
   border: none;
   border-radius: 20px;
-
   background: #ffffff;
   color: #1c1917;
-
   font-family: inherit;
-
   cursor: pointer;
-
-  transition:
-    background 0.12s,
-    transform 0.12s;
+  transition: background 0.12s, transform 0.12s;
 }
 
 .shortcutTile:active {
@@ -330,65 +259,47 @@
 .shortcutIcon {
   width: 34px;
   height: 34px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
-
   background: #f0ebe3;
   color: #c4956a;
-
   font-size: 24px;
   line-height: 1;
 }
 
-/* Loading */
+/* Loading / empty states */
 
-.loading {
-  min-height: 100dvh;
-
+.loading,
+.empty {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.empty {
+  flex-direction: column;
+  text-align: center;
 }
 
 .spinner {
   width: 26px;
   height: 26px;
-
   border: 3px solid #e8dfd7;
   border-top-color: #c4956a;
   border-radius: 50%;
-
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Empty/error state */
-
-.empty {
-  min-height: 100dvh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
+  to { transform: rotate(360deg); }
 }
 
 .empty h2 {
   margin: 0 0 6px;
-
   color: #403a35;
-
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 24px;
   font-weight: 500;
@@ -396,7 +307,6 @@
 
 .empty p {
   margin: 0;
-
   color: #a3978d;
   font-size: 13px;
 }
@@ -404,9 +314,8 @@
 /* Larger screens */
 
 @media (min-width: 768px) {
-  .page {
-    padding: 0 32px;
-    padding-bottom: 120px;
+  .scrollPage {
+    padding: 0 32px 120px;
   }
 
   .header {

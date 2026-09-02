@@ -10,7 +10,6 @@ export interface CreateExpenseRequest {
 
 export const expensesApi = {
   list: () => api.get<Expense[]>("/expenses"),
-  create: (data: CreateExpenseRequest) =>
-    api.post<Expense>("/expenses", data),
+  create: (data: CreateExpenseRequest) => api.post<Expense>("/expenses", data),
   delete: (id: string) => api.delete<void>(`/expenses/${id}`),
 };

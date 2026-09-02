@@ -1,0 +1,382 @@
+/* ── Layout ───────────────────────────── */
+.page {
+  composes: page from '../styles/PageShell.module.css';
+  background: #f7f3ee;
+}
+
+.loading {
+  min-height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+
+  border: 3px solid #e8dfd7;
+  border-top-color: #c38c61;
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.headerRight {
+  display: flex;
+  gap: 8px;
+}
+
+.back {
+  background: #ffffff;
+  border: none;
+  border-radius: 100px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9b8876;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+.back:active {
+  background: #f0ebe3;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1c1917;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.editBtn {
+  background: #ffffff;
+  border: 1.5px solid #ede8e0;
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 13px;
+  color: #9b8876;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s;
+}
+
+.deleteBtn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 1.5px solid #eadbd6;
+  border-radius: 50%;
+
+  color: #a77d72;
+  font-family: inherit;
+  cursor: pointer;
+
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.deleteBtn:active {
+  background: #faf5f3;
+  border-color: #d9c3bd;
+  color: #96695f;
+}
+
+.editBtn:active {
+  border-color: #c4956a;
+}
+
+.header {
+  composes: header from '../styles/PageShell.module.css';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: max(24px, env(safe-area-inset-top)) 18px 16px;
+  background: #f7f3ee;
+}
+
+.body {
+  composes: body from '../styles/PageShell.module.css';
+  box-sizing: border-box;
+  padding: 8px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer {
+  composes: footer from '../styles/PageShell.module.css';
+  padding: 14px 24px calc(env(safe-area-inset-bottom));
+  background: #f7f3ee;
+  border-top: 1px solid #ede8e0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.smallCard {
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #1c1917;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b5a99a;
+  margin-bottom: 2px;
+}
+
+.time {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+/* ── Client card (dashboard style) ───── */
+.clientCard {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.apptAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f0ebe3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #9b8876;
+  flex-shrink: 0;
+}
+
+.apptInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.clientName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1c1917;
+}
+
+.clientSub {
+  font-size: 13px;
+  color: #9b8876;
+  margin-top: 1px;
+}
+
+/* ── Status badge ─────────────────────── */
+.statusBadge {
+  display: inline-block;
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+  align-self: flex-start;
+}
+
+.booked {
+  background: #eef4ff;
+  color: #3a6bc9;
+}
+.complete {
+  background: #f0faf3;
+  color: #3a8a56;
+}
+.no_show {
+  background: #fef9ee;
+  color: #a07020;
+}
+.cancelled {
+  background: #fef0ee;
+  color: #c0614e;
+}
+
+/* ── Inputs ───────────────────────────── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.noServices { font-size: 14px; color: #b5a99a; margin: 0; }
+
+.chargeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #1c1917;
+  padding: 10px 0;
+}
+
+.chargeInfo,
+.chargePrice {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.chargePrice {
+  align-items: flex-end;
+}
+
+.designCharge {
+  color: #9b8876;
+  font-size: 13px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 12px;
+  border-top: 1px solid #ede8e0;
+  margin-top: 4px;
+}
+
+.totalLabel { font-size: 13px; color: #9b8876; }
+
+.totalValue {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1c1917;
+  line-height: 1;
+}
+
+.value {
+  font-size: 15px;
+  color: #1c1917;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+
+.receiptLink {
+  color: #c4956a;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 500;
+
+}
+
+.closeButton {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ebe5de;
+  color: #8f8175;
+
+  cursor: pointer;
+}
+
+.input,
+.select,
+.textarea {
+  padding: 13px 14px;
+  min-height: 50px;
+  border: 1.5px solid #ede8e0;
+  border-radius: 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #1c1917;
+  background: #f7f3ee;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus { border-color: #c4956a; background: #ffffff; }
+.textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+
+.errorText {
+  font-size: 13px;
+  color: #c0614e;
+  margin: 0;
+}
+
+.saveBtn {
+  flex: 1;
+  background: #1c1917;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+.saveBtn:active   { opacity: 0.75; }
+.saveBtn:disabled { opacity: 0.35; cursor: not-allowed; }

@@ -1,7 +1,5 @@
-
-
 .loading {
-  min-height: calc(100dvh - 48px);
+  height: 100%;
 
   display: flex;
   align-items: center;
@@ -26,15 +24,13 @@
 }
 
 .page {
-  min-height: 100dvh;
+  composes: page from '../styles/PageShell.module.css';
   box-sizing: border-box;
   background: #f7f3ee;
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  composes: header from '../styles/PageShell.module.css';
 
   display: flex;
   align-items: center;
@@ -90,8 +86,7 @@
 }
 
 .body {
-  flex: 1;
-  overflow-y: auto;
+  composes: body from '../styles/PageShell.module.css';
   padding: 8px 20px 20px;
   display: flex;
   flex-direction: column;
@@ -198,7 +193,9 @@
   cursor: pointer;
   transition: opacity 0.12s;
 }
-.apptRow:active { opacity: 0.7; }
+.apptRow:active {
+  opacity: 0.7;
+}
 
 .apptDate {
   font-size: 14px;
@@ -213,17 +210,25 @@
   text-transform: capitalize;
 }
 
-.booked    { background: #eef4ff; color: #3a6bc9; }
-.complete  { background: #f0faf3; color: #3a8a56; }
-.noShow    { background: #fef9ee; color: #a07020; }
-.cancelled { background: #fef0ee; color: #c0614e; }
+.booked {
+  background: #eef4ff;
+  color: #3a6bc9;
+}
+.complete {
+  background: #f0faf3;
+  color: #3a8a56;
+}
+.noShow {
+  background: #fef9ee;
+  color: #a07020;
+}
+.cancelled {
+  background: #fef0ee;
+  color: #c0614e;
+}
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  flex-shrink: 0;
+  composes: footer from '../styles/PageShell.module.css';
   padding: 12px 20px;
   padding-bottom: env(safe-area-inset-bottom);
   background: #f7f3ee;
@@ -232,7 +237,6 @@
   flex-direction: column;
   gap: 8px;
 }
-
 
 .error {
   font-size: 13px;
@@ -257,8 +261,13 @@
   font-family: inherit;
   transition: opacity 0.15s;
 }
-.saveBtn:active   { opacity: 0.75; }
-.saveBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+.saveBtn:active {
+  opacity: 0.75;
+}
+.saveBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
 
 .cancelBtn {
   background: #ffffff;
@@ -271,7 +280,9 @@
   font-family: inherit;
   transition: border-color 0.15s;
 }
-.cancelBtn:active { border-color: #c4956a; }
+.cancelBtn:active {
+  border-color: #c4956a;
+}
 
 .deleteBtn {
   background: none;
@@ -285,7 +296,9 @@
   font-family: inherit;
   transition: color 0.15s;
 }
-.deleteBtn:active { color: #9b8876; }
+.deleteBtn:active {
+  color: #9b8876;
+}
 
 .empty {
   text-align: center;
@@ -328,5 +341,11 @@
   -webkit-appearance: none;
 }
 .input:focus,
-.textarea:focus { border-color: #c4956a; }
-.textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+.textarea:focus {
+  border-color: #c4956a;
+}
+.textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}

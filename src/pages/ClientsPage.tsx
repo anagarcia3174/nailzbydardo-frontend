@@ -54,7 +54,7 @@ export function ClientsPage() {
     }
   }
 
-  if (isLoading) {
+   if (isLoading) {
     return (
       <main className={styles.page}>
         <div className={styles.loading}>
@@ -70,12 +70,10 @@ export function ClientsPage() {
 
   return (
     <main className={styles.page}>
-      <div className={styles.content}>
-        <div className={styles.stickyHeader}>
-          <header className={styles.header}>
-            <div>
-              <h1>Clients</h1>
-            </div>
+      <div className={styles.header}>
+        <div className={styles.content}>
+          <div className={styles.headerTop}>
+            <h1>Clients</h1>
 
             <button
               type="button"
@@ -85,11 +83,10 @@ export function ClientsPage() {
               <IconPlus size={18} stroke={2} />
               <span>New</span>
             </button>
-          </header>
+          </div>
 
           <div className={styles.searchWrapper}>
             <IconSearch className={styles.searchIcon} size={19} stroke={1.8} />
-
             <input
               type="text"
               value={search}
@@ -97,7 +94,6 @@ export function ClientsPage() {
               placeholder="Search clients..."
               className={styles.search}
             />
-
             {search && (
               <button
                 type="button"
@@ -110,63 +106,58 @@ export function ClientsPage() {
             )}
           </div>
         </div>
-
-        {filteredClients && filteredClients.length > 0 ? (
-          <div className={styles.list}>
-            {filteredClients.map((client) => (
-              <button
-                key={client.id}
-                type="button"
-                className={styles.card}
-                onClick={() => navigate(`/clients/${client.id}`)}
-              >
-                <div className={styles.avatar}>
-                  {client.client_name.charAt(0).toUpperCase()}
-                </div>
-
-                <div className={styles.info}>
-                  <span className={styles.name}>{client.client_name}</span>
-
-                  {client.contact_method && (
-                    <span className={styles.sub}>{client.contact_method}</span>
-                  )}
-                </div>
-
-                <IconChevronRight
-                  className={styles.arrow}
-                  size={19}
-                  stroke={1.7}
-                />
-              </button>
-            ))}
-          </div>
-        ) : (
-          <div className={styles.empty}>
-            <div className={styles.emptyIcon}>
-              <IconUsers size={24} stroke={1.5} />
-            </div>
-
-            <h2>{search ? "No clients found" : "No clients yet"}</h2>
-
-            <p>
-              {search
-                ? "Try searching for a different name."
-                : "Add your first client to get started."}
-            </p>
-
-            {!search && (
-              <button
-                type="button"
-                className={styles.emptyButton}
-                onClick={() => setModalOpen(true)}
-              >
-                <IconPlus size={17} />
-                Add Client
-              </button>
-            )}
-          </div>
-        )}
       </div>
+
+      <div className={styles.body}>
+        <div className={styles.content}>
+          {filteredClients && filteredClients.length > 0 ? (
+            <div className={styles.list}>
+              {filteredClients.map((client) => (
+                <button
+                  key={client.id}
+                  type="button"
+                  className={styles.card}
+                  onClick={() => navigate(`/clients/${client.id}`)}
+                >
+                  <div className={styles.avatar}>
+                    {client.client_name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className={styles.info}>
+                    <span className={styles.name}>{client.client_name}</span>
+                    {client.contact_method && (
+                      <span className={styles.sub}>{client.contact_method}</span>
+                    )}
+                  </div>
+                  <IconChevronRight className={styles.arrow} size={19} stroke={1.7} />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.empty}>
+              <div className={styles.emptyIcon}>
+                <IconUsers size={24} stroke={1.5} />
+              </div>
+              <h2>{search ? "No clients found" : "No clients yet"}</h2>
+              <p>
+                {search
+                  ? "Try searching for a different name."
+                  : "Add your first client to get started."}
+              </p>
+              {!search && (
+                <button
+                  type="button"
+                  className={styles.emptyButton}
+                  onClick={() => setModalOpen(true)}
+                >
+                  <IconPlus size={17} />
+                  Add Client
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
       {modalOpen && (
         <div className={styles.overlay} onClick={() => setModalOpen(false)}>
           <div
@@ -174,10 +165,6 @@ export function ClientsPage() {
             onClick={(event) => event.stopPropagation()}
           >
             <div className={styles.modalHeader}>
-              <div>
-                <h2>Add Client</h2>
-              </div>
-
               <button
                 type="button"
                 className={styles.closeButton}
@@ -186,6 +173,9 @@ export function ClientsPage() {
               >
                 <IconX size={20} />
               </button>
+              <div>
+                <h2>Add Client</h2>
+              </div>
             </div>
 
             <form

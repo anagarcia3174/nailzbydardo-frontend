@@ -30,12 +30,12 @@ export function ClientDetailPage() {
     birthday: "",
   });
 
-    const statusClass: Record<string, string> = {
-    booked:    styles.booked,
-    complete:  styles.complete,
-    no_show:   styles.noShow,
+  const statusClass: Record<string, string> = {
+    booked: styles.booked,
+    complete: styles.complete,
+    no_show: styles.noShow,
     cancelled: styles.cancelled,
-  }
+  };
 
   function openEdit() {
     setForm({
@@ -51,22 +51,22 @@ export function ClientDetailPage() {
     setEditOpen(true);
   }
 
-async function handleSubmit() {
-  setError(null);
+  async function handleSubmit() {
+    setError(null);
 
-  try {
-    await updateClient.mutateAsync({
-      client_name: form.client_name,
-      contact_method: form.contact_method || null,
-      notes: form.notes || null,
-      birthday: form.birthday ? new Date(form.birthday).toISOString() : null,
-    });
+    try {
+      await updateClient.mutateAsync({
+        client_name: form.client_name,
+        contact_method: form.contact_method || null,
+        notes: form.notes || null,
+        birthday: form.birthday ? new Date(form.birthday).toISOString() : null,
+      });
 
-    setEditOpen(false);
-  } catch (err) {
-    setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setEditOpen(false);
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Something went wrong");
+    }
   }
-}
 
   async function handleDelete() {
     if (!confirm("Delete this client? This cannot be undone.")) return;
@@ -118,9 +118,11 @@ async function handleSubmit() {
 
   if (isLoading || !client) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner} />
-      </div>
+     <main className={styles.page}>
+        <div className={styles.loading}>
+          <div className={styles.spinner} />
+        </div>
+      </main>
     );
   }
 
@@ -153,46 +155,65 @@ async function handleSubmit() {
       <div className={styles.body}>
         {editOpen ? (
           <>
-          <div className={styles.field}>
+            <div className={styles.field}>
               <label className={styles.label}>Name</label>
-              <input type="text" value={form.client_name} onChange={(event) =>
-                    setForm({
-                      ...form,
-                      client_name: event.target.value,
-                    })
-                  } className={styles.input} placeholder="Client name" />
+              <input
+                type="text"
+                value={form.client_name}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    client_name: event.target.value,
+                  })
+                }
+                className={styles.input}
+                placeholder="Client name"
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label}>Contact Method</label>
-              <input type="text" value={form.contact_method}
-                  onChange={(event) =>
-                    setForm({
-                      ...form,
-                      contact_method: event.target.value,
-                    })
-                  } className={styles.input} placeholder="Phone or @handle" />
+              <input
+                type="text"
+                value={form.contact_method}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    contact_method: event.target.value,
+                  })
+                }
+                className={styles.input}
+                placeholder="Phone or @handle"
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label}>Birthday</label>
-              <input type="date" value={form.birthday}
-                  onChange={(event) =>
-                    setForm({
-                      ...form,
-                      birthday: event.target.value,
-                    })
-                  } className={styles.input} />
+              <input
+                type="date"
+                value={form.birthday}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    birthday: event.target.value,
+                  })
+                }
+                className={styles.input}
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label}>Notes</label>
-              <textarea value={form.notes}
-                  onChange={(event) =>
-                    setForm({
-                      ...form,
-                      notes: event.target.value,
-                    })
-                  } className={styles.textarea} placeholder="Allergies, preferences…" rows={3} />
+              <textarea
+                value={form.notes}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    notes: event.target.value,
+                  })
+                }
+                className={styles.textarea}
+                placeholder="Allergies, preferences…"
+                rows={3}
+              />
             </div>
-          
           </>
         ) : (
           <>
@@ -242,44 +263,54 @@ async function handleSubmit() {
             </div>
             {appointments?.length != 0 && (
               <>
-              <div className={styles.sectionLabel}>Appointment History</div>
-              <div className={styles.apptList}>
-                {appointments?.map(appt => (
-                  <div
-                    key={appt.id}
-                    className={styles.apptRow}
-                    onClick={() => navigate(`/appointments/${appt.id}`)}
-                  >
-                    <span className={styles.apptDate}>{formatDate(appt.appt_date)}</span>
-                    <span className={`${styles.apptStatus} ${statusClass[appt.appt_status]}`}>
-                      {appt.appt_status.replace('_', '-')}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              
+                <div className={styles.sectionLabel}>Appointment History</div>
+                <div className={styles.apptList}>
+                  {appointments?.map((appt) => (
+                    <div
+                      key={appt.id}
+                      className={styles.apptRow}
+                      onClick={() => navigate(`/appointments/${appt.id}`)}
+                    >
+                      <span className={styles.apptDate}>
+                        {formatDate(appt.appt_date)}
+                      </span>
+                      <span
+                        className={`${styles.apptStatus} ${statusClass[appt.appt_status]}`}
+                      >
+                        {appt.appt_status.replace("_", "-")}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </>
-            ) }
+            )}
           </>
         )}
       </div>
 
-        <div className={styles.footer}>
+      <div className={styles.footer}>
         {error && <p className={styles.error}>{error}</p>}
         {editOpen ? (
           <div className={styles.actionsRow}>
-            <button onClick={() => setEditOpen(false)} className={styles.cancelBtn}>Cancel</button>
-           <button
-  type="button"
-  onClick={handleSubmit}
-  disabled={updateClient.isPending}
-  className={styles.saveBtn}
->
-  {updateClient.isPending ? 'Saving…' : 'Save'}
-</button>
+            <button
+              onClick={() => setEditOpen(false)}
+              className={styles.cancelBtn}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={updateClient.isPending}
+              className={styles.saveBtn}
+            >
+              {updateClient.isPending ? "Saving…" : "Save"}
+            </button>
           </div>
         ) : (
-          <button onClick={handleDelete} className={styles.deleteBtn}>Delete Client</button>
+          <button onClick={handleDelete} className={styles.deleteBtn}>
+            Delete Client
+          </button>
         )}
       </div>
     </main>

@@ -1,3 +1,5 @@
+import type { ClientSummary } from "./client";
+
 export type AppointmentStatus = "booked" | "complete" | "no_show" | "cancelled";
 export type PaymentMethod = "cash" | "zelle" | "cash_app" | "other";
 export type DiscountType = "amount" | "percent";
@@ -15,7 +17,12 @@ export interface Appointment {
   tip: number | null;
   created_at: string;
 }
-
+export interface AppointmentWithClient {
+  id: string;
+  appt_date: string;
+  appt_status: AppointmentStatus;
+  client_name: string;
+}
 export interface DashboardAppointment {
   id: string;
   appt_date: string;
@@ -40,6 +47,8 @@ export interface AppointmentDetail {
   appointment: Appointment;
   appointment_services: AppointmentServiceSummary[];
   appointment_discounts: AppointmentDiscountSummary[];
+  client_summary: ClientSummary;
+  complete_appointments: number;
 }
 
 export interface AppointmentTotal {

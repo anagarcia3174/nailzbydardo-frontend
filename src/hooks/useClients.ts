@@ -41,8 +41,7 @@ export function useCreateClient() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: CreateClientRequest) => clientsApi.create(data),
-        onSuccess: () => invalidateClientRelated(queryClient),
-
+    onSuccess: () => invalidateClientRelated(queryClient),
   });
 }
 
@@ -50,8 +49,7 @@ export function useUpdateClient(id: string) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: UpdateClientRequest) => clientsApi.update(id, data),
-       onSuccess: () => invalidateClientRelated(queryClient, id),
-
+    onSuccess: () => invalidateClientRelated(queryClient, id),
   });
 }
 
@@ -59,7 +57,6 @@ export function useDeleteClient() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: string) => clientsApi.delete(id),
-       onSuccess: () => invalidateClientRelated(queryClient),
-
+    onSuccess: () => invalidateClientRelated(queryClient),
   });
 }

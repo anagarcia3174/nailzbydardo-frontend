@@ -13,20 +13,28 @@ import type { QueryClient } from "@tanstack/react-query";
  */
 export function invalidateAppointmentRelated(
   queryClient: QueryClient,
-  opts: { appointmentId?: string; clientId?: string } = {}
+  opts: { appointmentId?: string; clientId?: string } = {},
 ) {
   queryClient.invalidateQueries({ queryKey: ["appointments"] });
   queryClient.invalidateQueries({ queryKey: ["dashboard"] });
   queryClient.invalidateQueries({ queryKey: ["financials"] });
 
   if (opts.appointmentId) {
-    queryClient.invalidateQueries({ queryKey: ["appointments", opts.appointmentId] });
-    queryClient.invalidateQueries({ queryKey: ["appointments", opts.appointmentId, "total"] });
+    queryClient.invalidateQueries({
+      queryKey: ["appointments", opts.appointmentId],
+    });
+    queryClient.invalidateQueries({
+      queryKey: ["appointments", opts.appointmentId, "total"],
+    });
   }
 
   if (opts.clientId) {
-    queryClient.invalidateQueries({ queryKey: ["clients", opts.clientId, "appointments"] });
-    queryClient.invalidateQueries({ queryKey: ["clients", opts.clientId, "spent"] });
+    queryClient.invalidateQueries({
+      queryKey: ["clients", opts.clientId, "appointments"],
+    });
+    queryClient.invalidateQueries({
+      queryKey: ["clients", opts.clientId, "spent"],
+    });
   }
 }
 
@@ -38,7 +46,10 @@ export function invalidateExpenseRelated(queryClient: QueryClient) {
 }
 
 /** Call after create/update/delete on a client. */
-export function invalidateClientRelated(queryClient: QueryClient, clientId?: string) {
+export function invalidateClientRelated(
+  queryClient: QueryClient,
+  clientId?: string,
+) {
   queryClient.invalidateQueries({ queryKey: ["clients"] });
   if (clientId) {
     queryClient.invalidateQueries({ queryKey: ["clients", clientId] });

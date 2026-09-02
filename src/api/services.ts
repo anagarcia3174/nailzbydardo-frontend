@@ -10,8 +10,7 @@ export type UpdateServiceRequest = CreateServiceRequest;
 
 export const servicesApi = {
   list: () => api.get<Service[]>("/services"),
-  create: (data: CreateServiceRequest) =>
-    api.post<Service>("/services", data),
+  create: (data: CreateServiceRequest) => api.post<Service>("/services", data),
   update: (id: string, data: UpdateServiceRequest) =>
     api.patch<Service>(`/services/${id}`, data),
   delete: (id: string) => api.delete<void>(`/services/${id}`),

@@ -1,8 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  expensesApi,
-  type CreateExpenseRequest,
-} from "../api/expenses";
+import { expensesApi, type CreateExpenseRequest } from "../api/expenses";
 import { invalidateExpenseRelated } from "../lib/invalidation";
 
 export function useExpenses() {
@@ -16,8 +13,7 @@ export function useCreateExpense() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: CreateExpenseRequest) => expensesApi.create(data),
-        onSuccess: () => invalidateExpenseRelated(queryClient),
-
+    onSuccess: () => invalidateExpenseRelated(queryClient),
   });
 }
 
@@ -25,7 +21,6 @@ export function useDeleteExpense() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: string) => expensesApi.delete(id),
-        onSuccess: () => invalidateExpenseRelated(queryClient),
-
+    onSuccess: () => invalidateExpenseRelated(queryClient),
   });
 }
