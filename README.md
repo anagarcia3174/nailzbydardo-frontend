@@ -4,6 +4,19 @@ A mobile-first PWA for running a nail salon business — clients, appointments, 
 
 Talks to the [NailzByDardo API](https://github.com/anagarcia3174/nailzbydardo-backend). The API owns business rules, money math, and persistence; this app is the operator UI on top of that.
 
+## Screenshots
+
+<p>
+  <img src="docs/screenshots/login.png" alt="Login" width="120">
+  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="120">
+  <img src="docs/screenshots/appointment-detail.png" alt="Appointment detail" width="120">
+  <img src="docs/screenshots/receipt.png" alt="Appointment receipt" width="120">
+  <img src="docs/screenshots/client-profile.png" alt="Client profile" width="120">
+  <img src="docs/screenshots/financials.png" alt="Financials" width="120">
+</p>
+
+Login · Dashboard · Appointment · Receipt · Client · Financials
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -60,6 +73,7 @@ frontend/
 │   ├── context/            # session auth
 │   ├── types/              # domain types matching the API
 │   └── lib/invalidation.ts # cache invalidation after mutations
+├── docs/screenshots/       # README images (see Screenshots)
 └── public/                 # PWA icons
 ```
 

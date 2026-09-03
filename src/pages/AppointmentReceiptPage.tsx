@@ -58,7 +58,7 @@ export function AppointmentReceiptPage() {
   const services = appointmentDetail?.appointment_services ?? [];
   const discounts = appointmentDetail?.appointment_discounts ?? [];
   const completeAppointments =
-    appointmentDetail?.complete_appointments ?? 0;
+    appointmentDetail?.appointment_rank ?? 0;
 
   if (!appointment) {
     return (

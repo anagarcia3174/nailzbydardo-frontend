@@ -182,6 +182,7 @@ export function DashboardPage() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Quick Actions</h2>
 
+          <div className={styles.shortcutGrid}>
             <button
               type="button"
               className={styles.shortcutTile}
@@ -191,7 +192,15 @@ export function DashboardPage() {
               <span>New Appointment</span>
             </button>
 
-           
+            <button
+              type="button"
+              className={styles.shortcutTile}
+  onClick={() => navigate("/clients", { state: { openModal: true } })}
+            >
+              <span className={styles.shortcutIcon}>＋</span>
+              <span>New Client</span>
+            </button>
+          </div>
         </section>
       </div>
     </main>

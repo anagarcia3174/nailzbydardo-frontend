@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   IconPlus,
   IconSearch,
@@ -16,6 +16,7 @@ export function ClientsPage() {
   const { data: clients, isLoading } = useClients();
   const createClient = useCreateClient();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -27,6 +28,14 @@ export function ClientsPage() {
     notes: "",
     birthday: "",
   });
+
+  useEffect(() => {
+    if ((location.state as { openModal?: boolean } | null)?.openModal) {
+      setModalOpen(true);
+      // clear the state so refresh/back-nav doesn't reopen the modal
+      navigate(location.pathname, { replace: true, state: null });
+    }
+  }, [location.state, location.pathname, navigate]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
