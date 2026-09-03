@@ -70,8 +70,12 @@ const [discountChanges, setDiscountChanges] = useState<DiscountChanges>({
 })
   const appointment = appointmentDetail?.appointment;
   const clientSummary = appointmentDetail?.client_summary;
-  const completeAppointments = appointmentDetail?.complete_appointments ?? 0;
-  const services = appointmentDetail?.appointment_services;
+const appointmentRank = appointmentDetail?.appointment_rank ?? 0;
+const completedCountForHearts =
+  appointment?.appt_status === "complete"
+    ? appointmentRank
+    : Math.max(appointmentRank - 1, 0);  
+    const services = appointmentDetail?.appointment_services;
   const discounts = appointmentDetail?.appointment_discounts;
 
   function updateField<K extends keyof UpdateAppointmentRequest>(
@@ -285,13 +289,13 @@ const [discountChanges, setDiscountChanges] = useState<DiscountChanges>({
             </div>
           )}
         </div>
-        {!editing && completeAppointments >= 0 && (
-          <LoyaltyHearts
-            completedCount={completeAppointments}
-            pendingVisit={appointment?.appt_status === "booked"}
-            historical={appointment?.appt_status === "complete"}
-          />
-        )}
+        {!editing && appointmentDetail?.appointment_rank != null && (
+  <LoyaltyHearts
+    completedCount={completedCountForHearts}
+    pendingVisit={appointment?.appt_status === "booked"}
+    historical={appointment?.appt_status === "complete"}
+  />
+)}
  {!editing ? (
   <>
   <div className={styles.card}>

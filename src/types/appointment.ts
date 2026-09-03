@@ -48,7 +48,7 @@ export interface AppointmentDetail {
   appointment_services: AppointmentServiceSummary[];
   appointment_discounts: AppointmentDiscountSummary[];
   client_summary: ClientSummary;
-  complete_appointments: number;
+  appointment_rank: number;
 }
 
 export interface AppointmentTotal {
