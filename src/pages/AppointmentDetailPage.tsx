@@ -41,6 +41,22 @@ function formatCompactCurrency(cents: number) {
     ? `$${(value / 1000).toFixed(1).replace(/\.0$/, "")}k`
     : `$${value}`;
 }
+
+function toLocalDateInputValue(iso: string) {
+  const d = new Date(iso);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function toLocalTimeInputValue(iso: string) {
+  const d = new Date(iso);
+  const hours = String(d.getHours()).padStart(2, "0");
+  const minutes = String(d.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
 export function AppointmentDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -249,36 +265,36 @@ const completedCountForHearts =
         <div className={styles.card}>
           <div className={styles.sectionLabel}>Date & Time</div>
 
-          {editing ? (
-            <div className={styles.row}>
-              <input
-              className={styles.input}
-                type="date"
-                value={editForm?.appt_date.slice(0, 10) ?? ""}
-                onChange={(e) => {
-                  if (!editForm) return;
-                  const time = editForm.appt_date.slice(11, 16);
-                  updateField(
-                    "appt_date",
-                    new Date(`${e.target.value}T${time}`).toISOString(),
-                  );
-                }}
-              />
-              <input
-                className={styles.input}
-                type="time"
-                value={editForm?.appt_date.slice(11, 16) ?? ""}
-                onChange={(e) => {
-                  if (!editForm) return;
-                  const date = editForm.appt_date.slice(0, 10);
-                  updateField(
-                    "appt_date",
-                    new Date(`${date}T${e.target.value}`).toISOString(),
-                  );
-                }}
-              />
-            </div>
-          ) : (
+         {editing ? (
+  <div className={styles.row}>
+    <input
+      className={styles.input}
+      type="date"
+      value={editForm ? toLocalDateInputValue(editForm.appt_date) : ""}
+      onChange={(e) => {
+        if (!editForm) return;
+        const time = toLocalTimeInputValue(editForm.appt_date);
+        updateField(
+          "appt_date",
+          new Date(`${e.target.value}T${time}`).toISOString(),
+        );
+      }}
+    />
+    <input
+      className={styles.input}
+      type="time"
+      value={editForm ? toLocalTimeInputValue(editForm.appt_date) : ""}
+      onChange={(e) => {
+        if (!editForm) return;
+        const date = toLocalDateInputValue(editForm.appt_date);
+        updateField(
+          "appt_date",
+          new Date(`${date}T${e.target.value}`).toISOString(),
+        );
+      }}
+    />
+  </div>
+) : (
             <div className={styles.value}>
               <span>
                 {appointment?.appt_date && formatDisplay(appointment.appt_date)}
