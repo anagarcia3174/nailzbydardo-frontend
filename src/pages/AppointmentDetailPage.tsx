@@ -309,7 +309,7 @@ const [discountChanges, setDiscountChanges] = useState<DiscountChanges>({
     </div>
     <div className={styles.chargePrice}>
       <span>
-        {formatCompactCurrency(item.service_price + item.design_price)}
+        {formatCompactCurrency(item.service_price)}
       </span>
 
       {item.design_price > 0 && (
