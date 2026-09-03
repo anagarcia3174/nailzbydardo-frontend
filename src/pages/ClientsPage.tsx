@@ -64,9 +64,11 @@ export function ClientsPage() {
     );
   }
 
-  const filteredClients = clients?.filter((client) =>
+const filteredClients = clients
+  ?.filter((client) =>
     client.client_name.toLowerCase().includes(search.toLowerCase()),
-  );
+  )
+  .sort((a, b) => a.client_name.localeCompare(b.client_name));
 
   return (
     <main className={styles.page}>

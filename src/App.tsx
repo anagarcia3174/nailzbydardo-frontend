@@ -10,6 +10,7 @@ import { AppointmentsPage } from "./pages/AppointmentsPage";
 import { AppointmentDetailPage } from "./pages/AppointmentDetailPage";
 import { FinancialsPage } from "./pages/FinancialsPage";
 import { NewAppointmentPage } from "./pages/NewAppointmenPage";
+import { AppointmentReceiptPage } from "./pages/AppointmentReceiptPage";
 
 function App() {
   return (
@@ -77,6 +78,14 @@ function App() {
         element={
           <ProtectedRoute>
             <AppointmentDetailPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/appointments/:id/receipt"
+        element={
+          <ProtectedRoute>
+            <AppointmentReceiptPage />
           </ProtectedRoute>
         }
       />

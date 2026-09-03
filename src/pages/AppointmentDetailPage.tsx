@@ -391,15 +391,17 @@ const amount = d.discount_type === "percent" ? d.discount_value : formatCompactC
           </div>
 
            {appointment?.appt_status === "complete" && (
-          <div className={styles.smallCard}>
-            <div className={styles.sectionLabel}>Receipt</div>
-            <a
-              target="_blank"
-              className={styles.receiptLink}
-            >
-              →
-            </a>
-          </div>
+        <div className={styles.smallCard}>
+  <div className={styles.sectionLabel}>Receipt</div>
+
+  <button
+    type="button"
+    className={styles.receiptLink}
+    onClick={() => navigate(`/appointments/${id}/receipt`)}
+  >
+    →
+  </button>
+</div>
         )}
  </>
 ) : (<>

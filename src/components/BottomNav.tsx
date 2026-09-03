@@ -41,7 +41,11 @@ const tabs = [
     icon: IconBrush,
   },
 ];
-const HIDDEN_NAV_ROUTES = [/^\/clients\/[^/]+$/, /^\/appointments\/[^/]+$/];
+const HIDDEN_NAV_ROUTES = [
+  /^\/clients\/[^/]+$/,
+  /^\/appointments\/[^/]+$/,
+  /^\/appointments\/[^/]+\/receipt$/,
+];
 
 export function BottomNav() {
   const location = useLocation();

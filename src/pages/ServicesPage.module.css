@@ -1,0 +1,324 @@
+.page {
+  composes: page from '../styles/PageShell.module.css';
+  background: #f7f3ee;
+}
+
+.header {
+  composes: header from '../styles/PageShell.module.css';
+  box-sizing: border-box;
+  padding: max(24px, env(safe-area-inset-top)) 18px 16px;
+  background: #f7f3ee;
+}
+
+.body {
+  composes: body from '../styles/PageShell.module.css';
+  box-sizing: border-box;
+  padding: 8px 18px calc(100px + env(safe-area-inset-bottom));
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header row */
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerTop h1 {
+  margin: 0;
+  color: #272320;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.newButton {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 12px;
+  background: #211e1c;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.newButton:hover {
+  background: #302c29;
+}
+
+.newButton:active {
+  transform: scale(0.96);
+}
+
+/* List */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* View state */
+
+.viewRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.serviceName {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #302c29;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.servicePrice {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #c4956a;
+}
+
+.viewActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.iconBtn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ede8e0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #9b8876;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.iconBtn:active {
+  border-color: #c4956a;
+  color: #c4956a;
+}
+
+.iconBtnDanger {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #eadbd6;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #a77d72;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.iconBtnDanger:active {
+  background: #faf5f3;
+  border-color: #d9c3bd;
+  color: #96695f;
+}
+
+/* Edit / create state */
+
+.editRow {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1.5px solid #ede8e0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #1c1917;
+  background: #f7f3ee;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: #c4956a;
+  background: #ffffff;
+}
+
+.priceInputWrap {
+  flex-shrink: 0;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  border: 1.5px solid #ede8e0;
+  border-radius: 12px;
+  background: #f7f3ee;
+  transition: border-color 0.15s;
+}
+
+.priceInputWrap:focus-within {
+  border-color: #c4956a;
+  background: #ffffff;
+}
+
+.dollarSign {
+  font-size: 14px;
+  color: #b5a99a;
+}
+
+.priceInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  color: #1c1917;
+  padding: 12px 0;
+  -webkit-appearance: none;
+}
+
+.editActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cancelBtn,
+.saveBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.cancelBtn {
+  border: 1.5px solid #ede8e0;
+  background: #ffffff;
+  color: #9b8876;
+}
+
+.cancelBtn:active {
+  background: #f7f2ec;
+}
+
+.saveBtn {
+  border: none;
+  background: #1c1917;
+  color: #ffffff;
+}
+
+.saveBtn:active {
+  opacity: 0.75;
+}
+
+.saveBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 13px;
+  color: #c0614e;
+  margin: 0;
+}
+
+/* Empty state */
+
+.empty {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.empty h2 {
+  margin: 0 0 6px;
+  color: #403a35;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.empty p {
+  margin: 0;
+  color: #a3978d;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Loading */
+
+.loading {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #e8dfd7;
+  border-top-color: #c38c61;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Larger screens */
+
+@media (min-width: 768px) {
+  .header {
+    padding: 32px 32px 16px;
+  }
+
+  .body {
+    padding: 8px 32px 120px;
+  }
+}

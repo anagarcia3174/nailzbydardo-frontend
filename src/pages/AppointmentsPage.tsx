@@ -57,8 +57,14 @@ export function AppointmentsPage() {
     );
   }
 
-  const filtered =
-    appointments?.filter((a) => a.appt_status === statusFilter) ?? [];
+const isPastStatus = statusFilter !== "booked";
+
+const filtered = (appointments?.filter((a) => a.appt_status === statusFilter) ?? [])
+  .slice()
+  .sort((a, b) => {
+    const diff = new Date(a.appt_date).getTime() - new Date(b.appt_date).getTime();
+    return isPastStatus ? -diff : diff;
+  });
 
   return (
     <main className={styles.page}>
